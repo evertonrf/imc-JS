@@ -9,13 +9,31 @@ function imc() {
     const resultado = document.getElementById('resultado');
 
     if (nome !== '' && altura !== '' && peso !== '') {
-        const valorIMC = (peso / (altura * altura)).toFixed(2);
+        const valorIMC = (peso / (altura * altura)).toFixed(1);
 
-        resultado.textContent = valorIMC;
+
+
+        let classificacao = '';
+
+        if (valorIMC < 18.5) {
+            calssificacao = 'abaixo do peso.';
+        } else if (valorIMC < 25) {
+            classificacao = 'com peso ideal. Parabéns!!!';
+        } else if (valorIMC < 30) {
+            classificacao = 'você esta acima do peso';
+        } else if (valorIMC < 35) {
+            classificacao = 'obesidade grau I';
+        } else if (valorIMC < 40) {
+            classificacao = 'obesidade grau II';
+        } else {
+            classificacao = 'obesidade grau II. Cuidado !!!';
+        }
+
+        resultado.textContent = '${nome} seu IMC é ${valorIMC} e você está ${classificacao}';
     } else {
         resultado.textContent = 'Preencha todos os campos!!!'
     }
 
 }
 
-calcular.addEventListener('click', imc)
+calcular.addEventListener('click', imc);
